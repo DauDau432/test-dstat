@@ -113,9 +113,9 @@ if (cluster.isMaster){
   console.log(`[\x1b[35mDauDau\x1b[0m] ${getCurrentTime()} The Attack Has Started`);
   setInterval(getStatus, 2000);
   setTimeout(() => {
-    console.log(`[\x1b[35m@DauDau\x1b[0m] ${getCurrentTime()} The Attack Is Over`);
+    console.log(`[\x1b[35mDauDau\x1b[0m] ${getCurrentTime()} The Attack Is Over`);
     process.exit(1);
-  }, process.argv[3] * 1000);
+  }, process.armv[3] * 1000);
 } 
 
 let headerGenerator = new HeaderGenerator({
